@@ -1,0 +1,34 @@
+var inputArray = [[1, 9], [2, 8, 7], [3, 4, [5, 6]]];
+ 
+function arrayCheck(arr) {
+    for (var j = 0; j < arr.length; j++) {
+        if (Array.isArray(arr[j])) {
+            return false;
+        }
+    }
+    return true;
+}
+function makePlainArray(arr) {
+    var opArray = [];
+    for (var k = 0; k < inputArray.length; k++) {
+        if (!Array.isArray(inputArray[k])) {
+            opArray.push(inputArray[k]);
+        } else {
+            opArray = opArray.concat(inputArray[k]);
+        }
+    }
+    return opArray;
+}
+ 
+var extremeOutput = [];
+while (1) {
+    extremeOutput = makePlainArray(inputArray);
+    if (arrayCheck(extremeOutput)) {
+        break;
+    } else {
+        inputArray = extremeOutput;
+        extremeOutput = makePlainArray(extremeOutput);
+    }
+}
+console.log(JSON.stringify(extremeOutput));
+ 
