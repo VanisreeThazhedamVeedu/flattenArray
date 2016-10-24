@@ -1,0 +1,2 @@
+# flattenArray
+assignment for citrusbyte
